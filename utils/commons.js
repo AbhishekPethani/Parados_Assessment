@@ -1,7 +1,7 @@
 var admin = require('firebase-admin');
 
 // Fetch the service account key JSON file contents
-const serviceAccount = "E:\\Projects\\Parados_Assessment\\parados-assessment-firebase-adminsdk-g74mk-fb40430105.json";
+const serviceAccount = process.env.GOOGLE_SECRET;
 
 // Initialize the app with a service account, granting admin privileges
 admin.initializeApp({
