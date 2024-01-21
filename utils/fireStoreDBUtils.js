@@ -23,7 +23,7 @@ async function retrieveTextRecordFromFirestore(collection, document) {
         return data;
     } else {
         console.log('Document not found.');
-        return Error("Document not found.");
+        return null;
     }
 }
 
