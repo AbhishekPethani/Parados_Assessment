@@ -6,7 +6,8 @@ const firestoreDocument = 'exampleDocument';
 // 3. Create a text record in the Firestore Database.
 async function createTextRecordToFirestore(collection, document, data) {
     try {
-        await db.collection(collection).doc(document).set(data);
+        const collectionRef = db.collection(collection).doc(document);
+        const res = await collectionRef.set(data, { merge: true });
         console.log('Text record created successfully.');
         return "Text record created successfully.";
     } catch (error) {
