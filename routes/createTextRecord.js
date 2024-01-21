@@ -4,11 +4,10 @@ const { createTextRecordToFirestore, firestoreCollection, firestoreDocument } = 
 
 router.post("/", (req, res) => {
     console.log(req.body);
-    const key = req.body.key;
-    const value = req.body.value;
-    console.log(key, value);
-    const textData = {key : value}
-    createTextRecordToFirestore(firestoreCollection, firestoreDocument, textData)
+    const k = req.body.key;
+    const v = req.body.value;
+    console.log(k, v);
+    createTextRecordToFirestore(firestoreCollection, firestoreDocument, { k: v })
         .then((result) => {
             res.status(201).send({ "result": result });
         })
