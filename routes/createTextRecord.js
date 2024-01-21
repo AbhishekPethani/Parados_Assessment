@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { createTextRecordToFirestore, firestoreCollection, firestoreDocument } = require('../utils/fireStoreDBUtils');
+const { createTextRecordToFirestore } = require('../utils/fireStoreDBUtils');
 
 router.post("/", (req, res) => {
-    console.log(req.body);
-    const firestoreCollection = req.body.collection;
-    const firestoreDocument = req.body.document;
-    const data = req.body.data;
-    createTextRecordToFirestore(firestoreCollection, firestoreDocument, data)
+    const { collection, document, text } = req.body;
+    
+    if (!collection || !document || !text) {
+      return res.status(400).json({ error: 'Bad Request. Missing required parameters.' });
+    }
+    
+    createTextRecordToFirestore(collection, document, data)
         .then((result) => {
             res.status(201).send({ "result": result });
         })

@@ -1,8 +1,6 @@
 var admin = require('./commons');
 var db = admin.firestore();
 
-const firestoreCollection = 'exampleCollection';
-const firestoreDocument = 'exampleDocument';
 // 3. Create a text record in the Firestore Database.
 async function createTextRecordToFirestore(collection, document, data) {
     try {
@@ -29,4 +27,4 @@ async function retrieveTextRecordFromFirestore(collection, document) {
     }
 }
 
-module.exports = { firestoreCollection, firestoreDocument, retrieveTextRecordFromFirestore, createTextRecordToFirestore };
+module.exports = { retrieveTextRecordFromFirestore, createTextRecordToFirestore };
