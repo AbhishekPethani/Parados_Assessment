@@ -10,10 +10,11 @@ router.get("/:collection/:document", (req, res) => {
     }
     retrieveTextRecordFromFirestore(collection, document)
         .then((result) => {
-            if(!result){
+            if(result != null){
+                res.status(200).send({ "result": result });
+            }else{
                 res.status(404).send({ "result": "No such Collection or Document exist!!" });
             }
-            res.status(200).send({ "result": result });
         })
         .catch((err) => {
             return res.status(500).json({ error: 'Internal Server Error' });
