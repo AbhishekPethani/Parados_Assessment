@@ -13,7 +13,7 @@ router.get("/:collection/:document", (req, res) => {
             if(result != null){
                 res.status(200).send({ "result": result });
             }else{
-                res.status(404).send({ "result": "No such Collection or Document exist!!" });
+                res.status(200).send({ "result": "No such Collection or Document exist!!" });
             }
         })
         .catch((err) => {
