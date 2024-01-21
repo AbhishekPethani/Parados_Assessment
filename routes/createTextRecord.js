@@ -3,8 +3,10 @@ const router = express.Router();
 const { createTextRecordToFirestore, firestoreCollection, firestoreDocument } = require('../utils/fireStoreDBUtils');
 
 router.post("/", (req, res) => {
-    const data = req.body;
-    createTextRecordToFirestore(firestoreCollection, firestoreDocument, data)
+    const key = req.body.key;
+    const value = req.body.value;
+    const textData = {key : value}
+    createTextRecordToFirestore(firestoreCollection, firestoreDocument, textData)
         .then((result) => {
             res.status(201).send({ "result": result });
         })
