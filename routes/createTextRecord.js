@@ -3,9 +3,9 @@ const router = express.Router();
 const { createTextRecordToFirestore } = require('../utils/fireStoreDBUtils');
 
 router.post("/", (req, res) => {
-    const { collection, document, text } = req.body;
+    const { collection, document, data } = req.body;
     
-    if (!collection || !document || !text) {
+    if (!collection || !document || !data) {
       return res.status(400).json({ error: 'Bad Request. Missing required parameters.' });
     }
     
@@ -14,7 +14,7 @@ router.post("/", (req, res) => {
             res.status(201).send({ "result": result });
         })
         .catch((err) => {
-            res.status(400).send({ "error": err });
+            res.status(500).send({ "error": "Internal Server Error" });
         });
 });
 module.exports = router;
