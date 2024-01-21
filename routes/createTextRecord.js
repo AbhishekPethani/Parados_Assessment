@@ -6,6 +6,7 @@ router.post("/", (req, res) => {
     console.log(req.body);
     const key = req.body.key;
     const value = req.body.value;
+    console.log(key, value);
     const textData = {key : value}
     createTextRecordToFirestore(firestoreCollection, firestoreDocument, textData)
         .then((result) => {
