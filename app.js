@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require("cors");
+const bodyParser = require("body-parser");
+
 const uploadFile = require('./routes/uploadFile');
 const downloadFile = require('./routes/downloadFile');
 const createTextRecord = require('./routes/createTextRecord');
@@ -13,8 +15,8 @@ const options = {
 };
 
 const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors(options));
 
 app.get('/', (req, res) => {
